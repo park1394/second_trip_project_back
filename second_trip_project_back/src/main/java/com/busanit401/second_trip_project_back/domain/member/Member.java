@@ -1,5 +1,6 @@
-package com.busanit401.second_trip_project_back.domain;
+package com.busanit401.second_trip_project_back.domain.member;
 
+import com.busanit401.second_trip_project_back.domain.member.MemberRole;
 import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDateTime;
