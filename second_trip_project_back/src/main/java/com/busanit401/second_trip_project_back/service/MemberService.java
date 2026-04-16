@@ -15,6 +15,5 @@ public interface MemberService {
     // 회원 삭제
     void remove(String mid);
 
-    // 기존 코드 아래에 추가
     MemberDTO login(String mid, String mpw);
 }
