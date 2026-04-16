@@ -72,6 +72,21 @@ public class MemberServiceImpl implements MemberService {
         return entityToDTO(member);
     }
 
+    @Override
+    public Optional<Member> findByMid(String mid) {
+        return memberRepository.findByMid(mid);
+    }
+
+    @Override
+    public boolean existsByMid(String mid) {
+        return memberRepository.existsByMid(mid);
+    }
+
+    @Override
+    public Optional<Member> findByEmail(String email) {
+        return memberRepository.findByEmail(email);
+    }
+
     private MemberDTO entityToDTO(Member member) {
         return MemberDTO.builder()
                 .mid(member.getMid())
