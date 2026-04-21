@@ -3,6 +3,7 @@ package com.busanit401.second_trip_project_back.domain.packages;
 import com.busanit401.second_trip_project_back.domain.member.Member;
 import com.busanit401.second_trip_project_back.enums.ReservationStatus;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -20,25 +21,26 @@ public class PackageReservation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // Member 엔티티와 연결 (PK인 id를 참조)
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "member_id")
+    @JoinColumn(name = "member_id", nullable = false)
     private Member member;
 
-    // PackageItem 엔티티와 연결
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "package_id")
+    @JoinColumn(name = "package_id", nullable = false)
     private PackageItem packageItem;
 
     @Column(nullable = false)
     private LocalDate reservationDate;
 
     @Column(nullable = false)
+    @Min(1)
     private int peopleCount;
 
     @Column(nullable = false)
     private int totalPrice;
 
+    @Builder.Default
     @Enumerated(EnumType.STRING)
-    private ReservationStatus status; // PENDING, CONFIRMED 등
+    @Column(nullable = false)
+    private ReservationStatus status = ReservationStatus.PENDING;
 }

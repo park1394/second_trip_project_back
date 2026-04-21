@@ -32,10 +32,28 @@ public class PackageItem {
     private String itinerary; // 여행 일정 (JSON 문자열로 저장하거나, 별도 엔티티 구성 권장)
 
     @Column
-    private int minPeople; // 최소 인원
+    private Integer minPeople; // 최소 인원
 
     @Column
-    private int maxPeople; // 최대 인원
+    private Integer maxPeople; // 최대 인원
+
+    @Column
+    private String category;
+
+    @Column
+    private String region;
+
+    @Column(length = 2000)
+    private String description;
+
+    @Column
+    private String tags; // 예: "#제주여행,#힐링"
+
+    @Column(length = 1000)
+    private String exclusions; // 예: "항공료,식사"
+
+    @Column(columnDefinition = "TEXT")
+    private String flightInfo; // JSON 문자열 저장
 
     // 필요한 경우 상품 정보 수정 메서드 추가
     public void changePrice(int price) { this.price = price; }
