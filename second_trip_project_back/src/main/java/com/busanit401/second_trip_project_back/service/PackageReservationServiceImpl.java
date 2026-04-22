@@ -55,6 +55,7 @@ public class PackageReservationServiceImpl implements PackageReservationService 
                 .map(res -> PackageReservationDTO.builder()
                         .reservationId(res.getId())
                         .packageId(res.getPackageItem().getId()) // ID 매핑
+                        .packageName(res.getPackageItem().getTitle())
                         .reservationDate(res.getReservationDate())
                         .peopleCount(res.getPeopleCount())
                         .totalPrice(res.getTotalPrice())
